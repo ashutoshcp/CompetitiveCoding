@@ -1,2 +1,7 @@
-.idea
+**/.idea/**
 **/venv/**
+**/.gradle/**
+**/gradelew
+**/gradelew.bat
+**/settings.gradle
+**/build/**

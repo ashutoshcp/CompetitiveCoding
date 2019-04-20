@@ -1,0 +1,14 @@
+apply plugin: 'java'
+
+group 'JAVA'
+version '0.1'
+
+sourceCompatibility = JavaVersion.VERSION_12
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+}
