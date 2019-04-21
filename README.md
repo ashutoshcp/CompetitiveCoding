@@ -5,13 +5,13 @@
  
  [Python Programs](Python_Code)
  
- [CPP Sorting](sorting)
+ [CPP Sorting](CPP/SORTING)
  
- [CPP STL](stl)
+ [CPP STL](CPP/STL)
  
- [CPP DP](DP)
+ [CPP DP](CPP/DP)
  
- [SPOJ](SpojCodes)
- 
- [Some Examples](code-pre)
+ [SPOJ](CPP/SPOJCODES)
+
+[CPP](CPP)
  
