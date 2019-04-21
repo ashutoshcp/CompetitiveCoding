@@ -8,28 +8,27 @@ class Solution:
         width = -1
         start = None
         end = None
-        while r < len(A) :
-            if nZero <= B :
-                if A[r] == 0 :
+        while r < len(A):
+            if nZero <= B:
+                if A[r] == 0:
                     nZero += 1
                 r += 1
 
-
-            if nZero > B :
-                if A[l] == 0 :
+            if nZero > B:
+                if A[l] == 0:
                     nZero -= 1
                 l += 1
-            if nZero<=B:
-                if r - l + 1 > width :
+            if nZero <= B:
+                if r - l + 1 > width:
                     width = r - l + 1
                     start = l
                     end = r
 
-            if r - l + 1 > width :
+            if r - l + 1 > width:
                 width = r - l + 1
                 start = l
                 end = r
         res = []
-        for i in range(start, end) :
+        for i in range(start, end):
             res.append(i)
         return res
