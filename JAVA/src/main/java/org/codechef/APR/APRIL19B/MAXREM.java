@@ -26,7 +26,7 @@ public class MAXREM {
         }
 
         long result = getMaxModuloFromArray(N, nArrayElements);
-
+        input.close();
         System.out.println(result);
     }
 
