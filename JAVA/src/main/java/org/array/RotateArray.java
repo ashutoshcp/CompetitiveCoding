@@ -7,7 +7,7 @@ import org.genericmaths.GCD;
  */
 public class RotateArray {
 
-    private RotateArray() {
+    public RotateArray() {
     }
 
     public static void main(String[] args) {
@@ -33,7 +33,7 @@ public class RotateArray {
      * @param rotationFactor
      * @param length
      */
-    private void lefRotateWithReverse(int[] array, int rotationFactor, int length) {
+    public void lefRotateWithReverse(int[] array, int rotationFactor, int length) {
         rotationFactor = getRotationFactorWithinLength(rotationFactor, length);
         reverseArray(array, 0,rotationFactor-1);
         reverseArray(array, rotationFactor, length-1);
