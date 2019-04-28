@@ -26,7 +26,6 @@ print(groups.keys())
 print(groups['target_names'])
 print(groups.target)
 
-
 print(np.unique(groups.target))
 print(groups.data[0])
 print(groups.target[0])
@@ -36,4 +35,3 @@ print(len(groups.data[1]))
 
 print(sns.distplot(groups.target))
 plt.show()
-

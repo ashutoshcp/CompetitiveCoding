@@ -8,10 +8,7 @@ import matplotlib.pyplot as plot
 
 from sklearn.decomposition import NMF
 
-
-def letters_only(string):
-    return string.isalpha()
-
+import Python_ML.StringUtils as StringUtils
 
 cv = CountVectorizer(stop_words="english", max_features=500)
 groups = fetch_20newsgroups()
@@ -23,7 +20,7 @@ for post in groups.data:
     cleaned.append(' '.join([
         lemmatizer.lemmatize(word.lower())
         for word in post.split()
-        if letters_only(word) and word not in all_names
+        if StringUtils.letters_only(word) and word not in all_names
     ]))
 
 transformed = cv.fit_transform(cleaned)
@@ -37,7 +34,6 @@ plot.scatter(labels, km.labels_)
 plot.xlabel('NewsGroup')
 plot.ylabel('Cluster')
 plot.show()
-
 
 # NMF (Non negative matrix factorization)
 nmf = NMF(n_components=100, random_state=43).fit(transformed)
