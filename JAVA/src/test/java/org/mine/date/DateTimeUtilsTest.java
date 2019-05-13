@@ -1,10 +1,18 @@
 package org.mine.date;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class DateTimeUtilsTest {
+
+    private DateTimeUtils dateTimeUtils;
+
+    @Before
+    public void setUp() throws Exception {
+        dateTimeUtils = new DateTimeUtils();
+    }
 
     @Test
     public void getCurrentTime() {
