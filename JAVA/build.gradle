@@ -3,7 +3,7 @@ apply plugin: 'java'
 group 'JAVA'
 version '0.1'
 
-sourceCompatibility = JavaVersion.VERSION_12
+sourceCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
     mavenCentral()
