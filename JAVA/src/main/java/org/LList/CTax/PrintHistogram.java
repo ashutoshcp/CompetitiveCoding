@@ -11,7 +11,7 @@ public class PrintHistogram {
 
     public static void main(String[] args) throws IOException {
         ZoneId zoneId = ZoneId.of("Asia/Kolkata");
-        File file = new File("/Users/ashutoshgupta/PycharmProjects/ML/JAVA/src/main/java/org/CTax/input.txt");
+        File file = new File("/Users/ashutoshgupta/PycharmProjects/ML/JAVA/src/main/java/org/LList/CTax/input.txt");
         BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
         String line = "";
         Clock clock;
@@ -24,6 +24,10 @@ public class PrintHistogram {
             int i = 0;
             for (String s : split) {
                 arr[i++] = Integer.parseInt(s);
+                if ((arr[i-1] < -9 || arr[i-1] > 99) ){
+                    System.out.println(arr[i-1]);
+                    throw new RuntimeException("Valid number range is [-9, 99], you have invalidNumber: " + s);
+                }
             }
             printHist(arr, N);
             clock = Clock.system(zoneId);
