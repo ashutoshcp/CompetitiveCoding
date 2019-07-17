@@ -1,6 +1,7 @@
 package org.LList;
 
 public class RecursiveReverse {
+
     private class Node {
         private int data;
         private Node next;
