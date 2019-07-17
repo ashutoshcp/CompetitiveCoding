@@ -1,10 +1,8 @@
 package org.codechef.JULY;
 
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Scanner;
@@ -89,7 +87,7 @@ public class PRTAGN {
                     }
                     nums.add(X);
                 }
-                List<Integer> queue = new ArrayList<>(nums);
+                Set<Integer> queue = (HashSet<Integer>) ((HashSet<Integer>) nums).clone();
                 for (Integer i : queue) {
                     if (!i.equals(X)) {
                         Integer xx;
