@@ -13,7 +13,7 @@ package org.array;
 public class FindMissing {
 
     public static void main(String[] args) {
-        int[] arr = {-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11};
+        int[] arr = {-3, -2,-1, 0, 1, 2, 3, 4,  6, 7, 8, 9, 10, 11};
         System.out.println(findMissing(arr));
     }
 
@@ -27,6 +27,7 @@ public class FindMissing {
             System.out.println(l + " : " + r + " : " + mid);
             if (arr[mid] - mid == arr[0]) {
                 if (arr[mid + 1] - arr[mid] > 1) {
+                    System.out.println(arr[mid] + " + " + 1);
                     return arr[mid] + 1;
                 } else {
                     l = mid + 1;
@@ -34,6 +35,7 @@ public class FindMissing {
 
             } else {
                 if (arr[mid] - arr[mid - 1] > 1) {
+                    System.out.println(arr[mid] + " - " + 1);
                     return arr[mid] - 1;
                 } else {
                     r = mid - 1;
