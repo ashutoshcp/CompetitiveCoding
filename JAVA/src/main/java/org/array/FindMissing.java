@@ -13,7 +13,7 @@ package org.array;
 public class FindMissing {
 
     public static void main(String[] args) {
-        int[] arr = {-3, -2, -1, 0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11};
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13};
         System.out.println(findMissing(arr));
     }
 
@@ -22,8 +22,18 @@ public class FindMissing {
     }
 
     private static int binarySearchModified(int[] arr, int l, int r) {
+        int length = arr.length;
+        if (length <= 1) {
+            System.out.println("No missing number");
+            return Integer.MAX_VALUE;
+        }
+        long tn = arr[0] + (length - 1) * (arr[1] - arr[0]);
+        if (tn == arr[length - 1]) {
+            System.out.println("No missing number");
+            return Integer.MAX_VALUE;
+        }
         while (l <= r) {
-            int mid = l - (r - l) / 2;
+            int mid = l + (r - l) / 2;
             System.out.println(l + " : " + r + " : " + mid);
             if (arr[mid] - mid == arr[0]) {
                 if (arr[mid + 1] - arr[mid] > 1) {
