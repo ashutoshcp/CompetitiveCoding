@@ -3,8 +3,8 @@ package org.codechef.AUGUST;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 public class KS1 {
     private final Reader bufferedReader;
@@ -23,56 +23,32 @@ public class KS1 {
         while (T-- > 0) {
             int N = bufferedReader.nextInt();
             long[] A = new long[N];
-            long xor = 0;
+
+
+            long count = 0;
             for (int i = 0; i < N; i++) {
-                long x = bufferedReader.nextLong();
-                A[i] = xor ^ x;
-                xor = A[i];
-            }
-            int count = 0;
-            if (N == 2) {
-                if (A[0] == A[1]) {
-                    System.out.println(1);
-                } else {
-                    System.out.println(0);
-                }
-                continue;
+                A[i] = bufferedReader.nextLong();
             }
 
-            Set<Long> mem = new HashSet<>();
-            for (int i = 1; i < N; i++) {
-                for (int j = i; j < N; j++) {
-                    mem.add(A[i] ^ A[j - 1]);
-                }
-            }
+            long k = 0;
+
+            Map<Long, Long> mapCount = new HashMap<>();
+            Map<Long, Long> mapSum = new HashMap<>();
+
+            mapCount.put(0L, 1L);
+            mapSum.put(0L, 0L);
+
             for (int i = 0; i < N; i++) {
-                for (int j = i + 1; j < N; j++) {
-                    if (i != 0) {
-                        if (mem.contains(A[j - 1] ^ A[i - 1])) {
-                            count++;
-                        }
-                    } else {
-                        if (mem.contains(A[j - 1])) {
-                            count++;
-                        }
-                    }
+                k = k ^ A[i];
+                if (!mapCount.containsKey(k)) {
+                    mapCount.put(k, 1L);
+                    mapSum.put(k, (long) (i + 1));
+                } else {
+                    count += mapCount.get(k) * i - mapSum.get(k);
+                    mapCount.put(k, mapCount.get(k) + 1L);
+                    mapSum.put(k, mapSum.get(k) + i + 1L);
                 }
             }
-            /*for (int i = 0; i < N; i++) {
-                for (int j = i + 1; j < N; j++) {
-                    for (int k = j; k < N; k++) {
-                        if (i != 0) {
-                            if ((A[j - 1] ^ A[i - 1]) == (A[k] ^ A[j - 1])) {
-                                count++;
-                            }
-                        } else {
-                            if (A[j - 1] == (A[k] ^ A[j - 1])) {
-                                count++;
-                            }
-                        }
-                    }
-                }
-            }*/
 
             System.out.println(count);
         }
