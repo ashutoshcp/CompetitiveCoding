@@ -1,4 +1,4 @@
-package org;
+package org.examples;
 
 import java.util.Arrays;
 import java.util.Scanner;
