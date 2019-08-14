@@ -3,9 +3,7 @@ package org.codechef.AUGUST;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class ZOMCAV {
     private final Reader reader;
@@ -19,16 +17,6 @@ public class ZOMCAV {
         chefdil.process();
     }
 
-    private class Query {
-        int s;
-        int e;
-
-        public Query(int s, int e) {
-            this.s = s;
-            this.e = e;
-        }
-    }
-
     private void process() throws IOException {
         int t = reader.nextInt();
         while (t-- > 0) {
@@ -39,12 +27,6 @@ public class ZOMCAV {
             for (int i = 0; i <= n; i++) {
                 R[i] = 0L;
             }
-            /*String cLine = reader.readLine();
-            String hLine = reader.readLine();
-            String[] cSplit = cLine.split(" ");
-            String[] hSplit = hLine.split(" ");
-            assert cSplit.length == n;
-            assert hSplit.length == n;*/
             H[0] = Long.MIN_VALUE;
             R[0] = Long.MIN_VALUE;
             C[0] = Long.MIN_VALUE;
@@ -54,26 +36,27 @@ public class ZOMCAV {
             for (int i = 1; i <= n; i++) {
                 H[i] = reader.nextLong();
             }
-            List<Query> queries = new ArrayList<>();
+            Long[] sum = new Long[n + 1];
+            for (int i = 0; i <= n; i++) {
+                sum[i] = 0L;
+            }
             for (int i = 1; i <= n; i++) {
                 long l = i - C[i];
                 long r = i + C[i];
                 l = (l < 1) ? 1 : l;
                 r = (r > n) ? n : r;
-                Query query = new Query((int) l, (int) r);
-                queries.add(query);
-                /*for (long j = l; j <= r; j++) {
-                    R[(int) j]++;
-                }*/
+                sum[(int) l] += 1L;
+                if ((sum[(int) r + 1]) < (n + 1)) {
+                    sum[(int) r + 1] -= 1L;
+                }
             }
-            incrementByOne(R, queries, n);
+            R[1] += sum[1];
+            for (int i = 2; i <= n; i++) {
+                sum[i] += sum[i - 1];
+                R[i] += sum[i];
+            }
             Arrays.sort(H);
             Arrays.sort(R);
-            /*System.out.println();
-            for (int i = 1; i <= n; i++) {
-                System.out.print(R[i] + " ");
-            }
-            System.out.println();*/
             boolean tt = true;
             for (int i = 1; i <= n; i++) {
                 if (!H[i].equals(R[i])) {
@@ -88,24 +71,6 @@ public class ZOMCAV {
             }
         }
         reader.close();
-    }
-
-    private void incrementByOne(Long[] r, List<Query> queries, int n) {
-        Long[] sum = new Long[n + 1];
-        for (int i = 0; i <= n; i++) {
-            sum[i] = 0L;
-        }
-        for (Query q : queries) {
-            sum[q.s] += 1L;
-            if ((q.e + 1) < (n + 1)) {
-                sum[q.e + 1] -= 1L;
-            }
-        }
-        r[1] += sum[1];
-        for (int i = 2; i <= n; i++) {
-            sum[i] += sum[i - 1];
-            r[i] += sum[i];
-        }
     }
 
     private static class Reader {
