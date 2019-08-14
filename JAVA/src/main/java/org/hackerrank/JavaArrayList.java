@@ -37,6 +37,33 @@ public class JavaArrayList {
             } catch (IndexOutOfBoundsException ex) {
                 System.out.println("ERROR!");
             }
+
+
         }
+    }
+
+    private List<Integer> dynamicArray(int n, List<List<Integer>> queries) {
+        int lastNum = 0;
+        List<List<Integer>> nums = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            nums.add(new ArrayList<>());
+        }
+        List<Integer> res = new ArrayList<>();
+
+        for(List<Integer> lists: queries) {
+            int type = lists.get(0);
+            int x = lists.get(1);
+            int y = lists.get(2);
+            int indx =(x ^ lastNum)%n;
+            if(type == 1) {
+                nums.get(indx).add(y);
+            } else {
+                int size = nums.get(indx).size();
+                lastNum = nums.get(indx).get(y%size);
+                res.add(lastNum);
+            }
+        }
+
+        return res;
     }
 }
