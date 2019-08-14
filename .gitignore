@@ -5,3 +5,5 @@
 **/gradelew.bat
 **/settings.gradle
 **/build/**
+venv/**
+venv
