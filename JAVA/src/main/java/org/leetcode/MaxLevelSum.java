@@ -4,25 +4,25 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class MaxLevelSum {
-      //Definition for a binary tree node.
-      private class TreeNode {
-          int val;
-          TreeNode left;
-          TreeNode right;
-          TreeNode(int x) { val = x; }
-      }
+    //Definition for a binary tree node.
+    private class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) {
+            val = x;
+        }
+    }
 
     public int maxLevelSum(TreeNode root) {
         int maxLevelSum = Integer.MIN_VALUE;
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
-        int level = 0;
         int lc = 0;
-        while (queue.size()!= 0) {
-            level++;
+        for (int level = 1; queue.size() != 0; level++) {
             int size = queue.size();
             int curr = 0;
-            while (size-- > 0) {
+            for (int i = 0; i < size; i++) {
                 TreeNode poll = queue.poll();
                 curr += poll.val;
                 if (poll.left != null) {
